@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jogo de Escolhas - Desenvolvimento</title>
+</head>
+<body>
+    <script>
+        function promptSync(message) {
+            return prompt(message);
+        }
+
+        function showMessage(message) {
+            alert(message);
+        }
+
+        function game() {
+            showMessage("Bem-vindo(a) ao Jogo de Escolhas - Desenvolvimento!");
+
+            // Escolha 1: Front-End ou Back-End
+            var area = promptSync("Digite 1 para seguir para a área de Front-End ou 2 para seguir para a área de Back-End:");
+
+            if (area === "1") {
+                // Escolha 2: React ou Vue
+                var frontEndChoice = promptSync("Você está na área de Front-End. Digite 1 para aprender React ou 2 para aprender Vue:");
+
+                if (frontEndChoice === "1") {
+                    showMessage("Parabéns! Você escolheu aprender React.");
+                } else if (frontEndChoice === "2") {
+                    showMessage("Parabéns! Você escolheu aprender Vue.");
+                } else {
+                    showMessage("Opção inválida. Reinicie o jogo para tentar novamente.");
+                    return;
+                }
+            } else if (area === "2") {
+                // Escolha 2: C# ou Java
+                var backEndChoice = promptSync("Você está na área de Back-End. Digite 1 para aprender C# ou 2 para aprender Java:");
+
+                if (backEndChoice === "1") {
+                    showMessage("Parabéns! Você escolheu aprender C#.");
+                } else if (backEndChoice === "2") {
+                    showMessage("Parabéns! Você escolheu aprender Java.");
+                } else {
+                    showMessage("Opção inválida. Reinicie o jogo para tentar novamente.");
+                    return;
+                }
+            } else {
+                showMessage("Opção inválida. Reinicie o jogo para tentar novamente.");
+                return;
+            }
+
+            // Escolha 3: Especializar ou ser Fullstack
+            var specializationChoice = promptSync("Agora, você pode escolher seguir se especializando na área escolhida (digite 1) ou seguir se desenvolvendo para se tornar Fullstack (digite 2):");
+
+            if (specializationChoice === "1") {
+                showMessage("Parabéns! Você escolheu se especializar na área escolhida.");
+            } else if (specializationChoice === "2") {
+                showMessage("Parabéns! Você escolheu se desenvolver para se tornar Fullstack.");
+            } else {
+                showMessage("Opção inválida. Reinicie o jogo para tentar novamente.");
+                return;
+            }
+
+            // Escolha 4: Tecnologias para aprender
+            var technologies = [];
+            var moreTechnologies = "ok";
+
+            while (moreTechnologies.toLowerCase() === "ok") {
+                var technology = promptSync("Digite o nome da tecnologia que você gostaria de aprender:");
+                technologies.push(technology);
+
+                moreTechnologies = promptSync("Tem mais alguma tecnologia que você gostaria de aprender? (digite 'ok' para continuar ou 'cancelar' para finalizar)");
+            }
+
+            if (technologies.length === 0) {
+                showMessage("Você não escolheu nenhuma tecnologia para aprender. Obrigado por jogar!");
+            } else {
+                var technologiesMessage = "Parabéns! Você escolheu aprender as seguintes tecnologias:\n";
+                technologies.forEach(function (tech) {
+                    technologiesMessage += "- " + tech + "\n";
+                });
+                showMessage(technologiesMessage);
+            }
+        }
+
+        game();
+    </script>
+</body>
+</html>
